@@ -19,24 +19,28 @@ import javax.swing.JRadioButton;
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class QuizGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblImageFundo;
 	private JPanel panelPrincipal;
-	private JPanel panelReta;
-	private JLabel lblReta;
-	private JLabel lblReta1;
-	private JLabel lblReta2;
-	private JPanel panelTriangulo;
-	private JLabel lblTriangulo;
-	private JPanel panelQuadrado;
-	private JLabel lblQuadrado;
-	private JLabel lblFundopanelprincipal;
 	private JLabel lblImagefractal;
 	private JPanel panelCronometro;
 	private JLabel lblLblfundovisor;
+	private JPanel panelContagem;
+	private JLabel lblFundocontagem;
+	private JLabel lblIcoquadrado;
+	private JPanel panel_1;
+	private JLabel lblTringulo;
+	private JPanel panel_2;
+	private JLabel lblReta;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
 	
 	//controlador
 	
@@ -83,93 +87,104 @@ public class QuizGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelPrincipal.setBounds(23, 350, 435, 158);
+		panelPrincipal.setBackground(Color.WHITE);
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelPrincipal.setBounds(221, 494, 200, 59);
 		contentPane.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		//panelPrincipal.setVisible(false);
 		
-		panelReta = new JPanel();
-		panelReta.setBorder(new LineBorder(new Color(153, 153, 153)));
-		panelReta.setBackground(Color.WHITE);
-		panelReta.setBounds(12, 15, 129, 131);
-		panelPrincipal.add(panelReta);
-		panelReta.setLayout(null);
-		panelReta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		
-		lblReta = new JLabel("____________________");
-		lblReta.setFont(new Font("Corbel", Font.PLAIN, 11));
-		lblReta.setBounds(12, 57, 117, 15);
-		panelReta.add(lblReta);
-		
-		lblReta1 = new JLabel("____________________");
-		lblReta1.setFont(new Font("Corbel", Font.PLAIN, 11));
-		lblReta1.setBounds(12, 58, 105, 15);
-		panelReta.add(lblReta1);
-		
-		lblReta2 = new JLabel("____________________");
-		lblReta2.setFont(new Font("Corbel", Font.PLAIN, 11));
-		lblReta2.setBounds(12, 59, 105, 15);
-		panelReta.add(lblReta2);
-		
-		panelTriangulo = new JPanel();
-		panelTriangulo.setBorder(new LineBorder(new Color(153, 153, 153)));
-		panelTriangulo.setBackground(Color.WHITE);
-		panelTriangulo.setBounds(153, 15, 129, 131);
-		panelPrincipal.add(panelTriangulo);
-		panelTriangulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		panelTriangulo.setLayout(null);
-		
-		lblTriangulo = new JLabel("");
-		lblTriangulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/triangulo2.png")));
-		lblTriangulo.setBounds(12, 12, 105, 107);
-		panelTriangulo.add(lblTriangulo);
-		
-		panelQuadrado = new JPanel();
-		panelQuadrado.setBorder(new LineBorder(new Color(153, 153, 153)));
-		panelQuadrado.setBackground(Color.WHITE);
-		panelQuadrado.setBounds(294, 15, 129, 131);
-		panelPrincipal.add(panelQuadrado);
-		panelQuadrado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		panelQuadrado.setLayout(null);
-		
-		lblQuadrado = new JLabel("");
-		lblQuadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado.png")));
-		lblQuadrado.setBounds(0, 12, 129, 107);
-		panelQuadrado.add(lblQuadrado);
-		
-		lblFundopanelprincipal = new JLabel("");
-		lblFundopanelprincipal.setBackground(new Color(112, 128, 144));
-		lblFundopanelprincipal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/FundoAr.jpg")));
-		lblFundopanelprincipal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lblFundopanelprincipal.setBounds(0, 0, 435, 158);
-		panelPrincipal.add(lblFundopanelprincipal);
+		lblIcoquadrado = new JLabel(" - Quadrado");
+		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
+		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado-button.png")));
+		lblIcoquadrado.setBounds(10, 11, 176, 37);
+		panelPrincipal.add(lblIcoquadrado);
 		
 		panelCronometro = new JPanel();
 		panelCronometro.setBorder(new LineBorder(new Color(119, 136, 153)));
-		panelCronometro.setBounds(597, 28, 172, 103);
+		panelCronometro.setBounds(594, 70, 361, 243);
 		contentPane.add(panelCronometro);
 		panelCronometro.setLayout(null);
 
 		
 		lblLblfundovisor = new JLabel("");
 		lblLblfundovisor.setForeground(Color.DARK_GRAY);
-		lblLblfundovisor.setBounds(70, 12, 330, 312);
+		lblLblfundovisor.setBounds(154, 29, 330, 312);
 		contentPane.add(lblLblfundovisor);
 		lblLblfundovisor.setBackground(new Color(192, 192, 192));
-		lblLblfundovisor.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		lblLblfundovisor.setBorder(new LineBorder(new Color(119, 136, 153)));
 		
 		lblImagefractal = new JLabel("");
 		lblImagefractal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/box3.jpg")));
-		lblImagefractal.setBounds(89, 30, 291, 276);
+		lblImagefractal.setBounds(173, 47, 291, 276);
 		contentPane.add(lblImagefractal);
 		lblImagefractal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
-	/*	
+		panelContagem = new JPanel();
+		panelContagem.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panelContagem.setBounds(0, 0, 78, 600);
+		contentPane.add(panelContagem);
+		panelContagem.setLayout(null);
+		
+		lblFundocontagem = new JLabel("");
+		lblFundocontagem.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/original.jpg")));
+		lblFundocontagem.setBounds(0, 0, 78, 600);
+		panelContagem.add(lblFundocontagem);
+		lblFundocontagem.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setLayout(null);
+		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_1.setBounds(332, 424, 200, 59);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		lblTringulo = new JLabel(" - Tri\u00E2ngulo");
+		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/triangulo-button.png")));
+		lblTringulo.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
+		lblTringulo.setBounds(10, 11, 176, 37);
+		panel_1.add(lblTringulo);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setLayout(null);
+		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_2.setBounds(122, 424, 200, 59);
+		contentPane.add(panel_2);
+		
+		lblReta = new JLabel("| | - Reta");
+		lblReta.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
+		lblReta.setBounds(10, 11, 176, 37);
+		panel_2.add(lblReta);
+		
+		label = new JLabel("1");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
+		label.setBounds(219, 364, 37, 37);
+		contentPane.add(label);
+		
+		label_1 = new JLabel("2");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
+		label_1.setBounds(275, 366, 37, 37);
+		contentPane.add(label_1);
+		
+		label_2 = new JLabel("3");
+		label_2.setForeground(Color.WHITE);
+		label_2.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
+		label_2.setBounds(340, 366, 46, 37);
+		contentPane.add(label_2);
+		
+		label_3 = new JLabel("4");
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
+		label_3.setBounds(396, 366, 46, 37);
+		contentPane.add(label_3);
+		
 		lblImageFundo = new JLabel("");
-		lblImageFundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/0000000002999.jpg")));
-		lblImageFundo.setBounds(0, 0, 670, 524);
+		lblImageFundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
+		lblImageFundo.setBounds(10, 0, 1024, 600);
 		lblImageFundo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		contentPane.add(lblImageFundo);  */
+		contentPane.add(lblImageFundo);  
 	}	
 }
