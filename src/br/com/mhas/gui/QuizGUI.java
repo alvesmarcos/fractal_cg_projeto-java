@@ -41,6 +41,7 @@ public class QuizGUI extends JFrame {
 	private JLabel label_1;
 	private JLabel label_2;
 	private JLabel label_3;
+	private JLabel lblInteracoesfundo;
 	
 	//controlador
 	
@@ -86,24 +87,41 @@ public class QuizGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panelPrincipal = new JPanel();
-		panelPrincipal.setBackground(Color.WHITE);
-		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelPrincipal.setBounds(221, 494, 200, 59);
-		contentPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
-		
-		lblIcoquadrado = new JLabel(" - Quadrado");
-		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
-		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado-button.png")));
-		lblIcoquadrado.setBounds(10, 11, 176, 37);
-		panelPrincipal.add(lblIcoquadrado);
-		
 		panelCronometro = new JPanel();
 		panelCronometro.setBorder(new LineBorder(new Color(119, 136, 153)));
-		panelCronometro.setBounds(594, 70, 361, 243);
+		panelCronometro.setBounds(632, 29, 238, 64);
 		contentPane.add(panelCronometro);
 		panelCronometro.setLayout(null);
+		
+		label = new JLabel("1");
+		label.setBounds(22, 11, 37, 48);
+		panelCronometro.add(label);
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
+		
+		label_1 = new JLabel("2");
+		label_1.setBounds(69, 11, 37, 48);
+		panelCronometro.add(label_1);
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
+		
+		label_2 = new JLabel("3");
+		label_2.setBounds(127, 11, 45, 48);
+		panelCronometro.add(label_2);
+		label_2.setForeground(Color.WHITE);
+		label_2.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
+		
+		label_3 = new JLabel("4");
+		label_3.setBounds(183, 11, 34, 48);
+		panelCronometro.add(label_3);
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
+		
+		lblInteracoesfundo = new JLabel("");
+		lblInteracoesfundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
+		lblInteracoesfundo.setBounds(0, 0, 238, 64);
+		panelCronometro.add(lblInteracoesfundo);
+		lblInteracoesfundo.setBorder(new LineBorder(new Color(119, 136, 153)));
 
 		
 		lblLblfundovisor = new JLabel("");
@@ -131,55 +149,55 @@ public class QuizGUI extends JFrame {
 		panelContagem.add(lblFundocontagem);
 		lblFundocontagem.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(549, 104, 412, 219);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		panel_2 = new JPanel();
+		panel_2.setBounds(10, 11, 393, 59);
+		panel.add(panel_2);
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setLayout(null);
+		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		
+		lblReta = new JLabel("| | - Reta");
+		lblReta.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
+		lblReta.setBounds(10, 11, 235, 37);
+		panel_2.add(lblReta);
+		
 		panel_1 = new JPanel();
+		panel_1.setBounds(10, 81, 393, 59);
+		panel.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_1.setBounds(332, 424, 200, 59);
-		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		lblTringulo = new JLabel(" - Tri\u00E2ngulo");
 		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/triangulo-button.png")));
-		lblTringulo.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
-		lblTringulo.setBounds(10, 11, 176, 37);
+		lblTringulo.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
+		lblTringulo.setBounds(10, 11, 235, 37);
 		panel_1.add(lblTringulo);
 		
-		panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setLayout(null);
-		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_2.setBounds(122, 424, 200, 59);
-		contentPane.add(panel_2);
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(10, 151, 393, 59);
+		panel.add(panelPrincipal);
+		panelPrincipal.setBackground(Color.WHITE);
+		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelPrincipal.setLayout(null);
 		
-		lblReta = new JLabel("| | - Reta");
-		lblReta.setFont(new Font("Trajan Pro", Font.PLAIN, 20));
-		lblReta.setBounds(10, 11, 176, 37);
-		panel_2.add(lblReta);
+		lblIcoquadrado = new JLabel(" - Quadrado");
+		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
+		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado-button.png")));
+		lblIcoquadrado.setBounds(10, 11, 235, 37);
+		panelPrincipal.add(lblIcoquadrado);
 		
-		label = new JLabel("1");
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
-		label.setBounds(219, 364, 37, 37);
-		contentPane.add(label);
-		
-		label_1 = new JLabel("2");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
-		label_1.setBounds(275, 366, 37, 37);
-		contentPane.add(label_1);
-		
-		label_2 = new JLabel("3");
-		label_2.setForeground(Color.WHITE);
-		label_2.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
-		label_2.setBounds(340, 366, 46, 37);
-		contentPane.add(label_2);
-		
-		label_3 = new JLabel("4");
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Trajan Pro", Font.ITALIC, 39));
-		label_3.setBounds(396, 366, 46, 37);
-		contentPane.add(label_3);
+	JLabel lblFundoresposta = new JLabel("");
+		lblFundoresposta.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
+		lblFundoresposta.setBounds(0, 0, 412, 220);
+		panel.add(lblFundoresposta);
+		lblFundoresposta.setBorder(new LineBorder(new Color(119, 136, 153))); 
 		
 		lblImageFundo = new JLabel("");
 		lblImageFundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
