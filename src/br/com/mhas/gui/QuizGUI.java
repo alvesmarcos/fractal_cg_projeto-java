@@ -28,20 +28,18 @@ public class QuizGUI extends JFrame {
 	private JLabel lblImageFundo;
 	private JPanel panelPrincipal;
 	private JLabel lblImagefractal;
-	private JPanel panelCronometro;
 	private JLabel lblLblfundovisor;
-	private JPanel panelContagem;
-	private JLabel lblFundocontagem;
 	private JLabel lblIcoquadrado;
 	private JPanel panel_1;
 	private JLabel lblTringulo;
 	private JPanel panel_2;
 	private JLabel lblReta;
-	private JLabel label;
+	private JLabel lblTimer;
+	private JLabel lblFundoescolha;
+	private JLabel lblTempoRestante;
+	private JLabel lblProximo;
+	private JLabel lblPrximo;
 	private JLabel label_1;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel lblInteracoesfundo;
 	
 	//controlador
 	
@@ -76,7 +74,7 @@ public class QuizGUI extends JFrame {
 		
 	//	setResizable(false);
 		
-		setBounds(325,45, 1024, 600);
+		setBounds(325,45, 950, 600);
 		
 		setLocationRelativeTo(null);
 		
@@ -86,123 +84,115 @@ public class QuizGUI extends JFrame {
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		panelCronometro = new JPanel();
-		panelCronometro.setBorder(new LineBorder(new Color(119, 136, 153)));
-		panelCronometro.setBounds(632, 29, 238, 64);
-		contentPane.add(panelCronometro);
-		panelCronometro.setLayout(null);
-		
-		label = new JLabel("1");
-		label.setBounds(22, 11, 37, 48);
-		panelCronometro.add(label);
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
-		
-		label_1 = new JLabel("2");
-		label_1.setBounds(69, 11, 37, 48);
-		panelCronometro.add(label_1);
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
-		
-		label_2 = new JLabel("3");
-		label_2.setBounds(127, 11, 45, 48);
-		panelCronometro.add(label_2);
-		label_2.setForeground(Color.WHITE);
-		label_2.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
-		
-		label_3 = new JLabel("4");
-		label_3.setBounds(183, 11, 34, 48);
-		panelCronometro.add(label_3);
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Trajan Pro", Font.PLAIN, 47));
-		
-		lblInteracoesfundo = new JLabel("");
-		lblInteracoesfundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
-		lblInteracoesfundo.setBounds(0, 0, 238, 64);
-		panelCronometro.add(lblInteracoesfundo);
-		lblInteracoesfundo.setBorder(new LineBorder(new Color(119, 136, 153)));
 
 		
 		lblLblfundovisor = new JLabel("");
 		lblLblfundovisor.setForeground(Color.DARK_GRAY);
-		lblLblfundovisor.setBounds(154, 29, 330, 312);
+		lblLblfundovisor.setBounds(226, 30, 330, 312);
 		contentPane.add(lblLblfundovisor);
-		lblLblfundovisor.setBackground(new Color(192, 192, 192));
-		lblLblfundovisor.setBorder(new LineBorder(new Color(119, 136, 153)));
+		lblLblfundovisor.setBackground(new Color(204, 204, 204));
+		lblLblfundovisor.setBorder(new LineBorder(new Color(204, 204, 204)));
 		
 		lblImagefractal = new JLabel("");
 		lblImagefractal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/box3.jpg")));
-		lblImagefractal.setBounds(173, 47, 291, 276);
+		lblImagefractal.setBounds(245, 48, 291, 276);
 		contentPane.add(lblImagefractal);
 		lblImagefractal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
-		panelContagem = new JPanel();
-		panelContagem.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelContagem.setBounds(0, 0, 78, 600);
-		contentPane.add(panelContagem);
-		panelContagem.setLayout(null);
-		
-		lblFundocontagem = new JLabel("");
-		lblFundocontagem.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/original.jpg")));
-		lblFundocontagem.setBounds(0, 0, 78, 600);
-		panelContagem.add(lblFundocontagem);
-		lblFundocontagem.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		
 		JPanel panel = new JPanel();
-		panel.setBounds(549, 104, 412, 219);
+		panel.setBackground(Color.PINK);
+		panel.setBounds(210, 399, 538, 177);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		panel_2 = new JPanel();
-		panel_2.setBounds(10, 11, 393, 59);
+		panel_2.setBounds(10, 11, 165, 158);
 		panel.add(panel_2);
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setLayout(null);
 		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		
-		lblReta = new JLabel("| | - Reta");
-		lblReta.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
-		lblReta.setBounds(10, 11, 235, 37);
+		lblReta = new JLabel("___________");
+		lblReta.setForeground(Color.BLACK);
+		lblReta.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		lblReta.setBounds(17, 60, 132, 37);
 		panel_2.add(lblReta);
 		
+		JLabel label = new JLabel("___________");
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		label.setBounds(17, 61, 132, 37);
+		panel_2.add(label);
+	
+		
 		panel_1 = new JPanel();
-		panel_1.setBounds(10, 81, 393, 59);
+		panel_1.setBounds(187, 11, 165, 158);
 		panel.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setLayout(null);
 		
-		lblTringulo = new JLabel(" - Tri\u00E2ngulo");
-		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/triangulo-button.png")));
+		lblTringulo = new JLabel("");
+		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/triangulo2.png")));
 		lblTringulo.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
-		lblTringulo.setBounds(10, 11, 235, 37);
+		lblTringulo.setBounds(31, 18, 124, 125);
 		panel_1.add(lblTringulo);
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(10, 151, 393, 59);
+		panelPrincipal.setBounds(362, 11, 165, 158);
 		panel.add(panelPrincipal);
 		panelPrincipal.setBackground(Color.WHITE);
 		panelPrincipal.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelPrincipal.setLayout(null);
 		
-		lblIcoquadrado = new JLabel(" - Quadrado");
+		lblIcoquadrado = new JLabel("");
 		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
-		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado-button.png")));
-		lblIcoquadrado.setBounds(10, 11, 235, 37);
+		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado.png")));
+		lblIcoquadrado.setBounds(18, 11, 129, 141);
 		panelPrincipal.add(lblIcoquadrado);
 		
-	JLabel lblFundoresposta = new JLabel("");
-		lblFundoresposta.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
-		lblFundoresposta.setBounds(0, 0, 412, 220);
-		panel.add(lblFundoresposta);
-		lblFundoresposta.setBorder(new LineBorder(new Color(119, 136, 153))); 
+		lblFundoescolha = new JLabel("");
+		lblFundoescolha.setBounds(0, 0, 538, 178);
+		panel.add(lblFundoescolha);
+		lblFundoescolha.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
+		lblFundoescolha.setBorder(new LineBorder(new Color(204, 204, 204)));
+		
+		lblTimer = new JLabel("30");
+		lblTimer.setForeground(Color.WHITE);
+		lblTimer.setFont(new Font("Trajan Pro", Font.PLAIN, 200));
+		lblTimer.setBounds(612, 65, 228, 214);
+		contentPane.add(lblTimer);
+		
+		lblTempoRestante = new JLabel("Tempo restante: ");
+		lblTempoRestante.setForeground(Color.WHITE);
+		lblTempoRestante.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblTempoRestante.setBounds(634, 48, 181, 14);
+		contentPane.add(lblTempoRestante);
+		
+		lblProximo = new JLabel("");
+		lblProximo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/right-arrow7.png")));
+		lblProximo.setBounds(707, 268, 141, 98);
+		contentPane.add(lblProximo);
+		
+		lblPrximo = new JLabel("Pr\u00F3ximo");
+		lblPrximo.setForeground(Color.WHITE);
+		lblPrximo.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
+		lblPrximo.setBounds(631, 310, 79, 14);
+		contentPane.add(lblPrximo);
+		
+		
+		label_1 = new JLabel("1/1");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Trajan Pro", Font.PLAIN, 24));
+		label_1.setBounds(782, 539, 79, 36);
+		contentPane.add(label_1);
 		
 		lblImageFundo = new JLabel("");
-		lblImageFundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/texture-texture-blue-color-abrasion.jpg")));
-		lblImageFundo.setBounds(10, 0, 1024, 600);
+		lblImageFundo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/scrapbarquinhoback.jpg")));
+		lblImageFundo.setBounds(0, 0, 950, 600);
 		lblImageFundo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(lblImageFundo);  
+		
 	}	
 }
