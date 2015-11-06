@@ -265,7 +265,7 @@ public class GameGUI extends JFrame {
 		lblBackgroundListCard.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/fundo-carta-onda-gray.png")));
 		lblBackgroundListCard.setBounds(69, 345, 881, 260);
 		panelGame.add(lblBackgroundListCard);
-		
+ 	
 		lblScoreplayer = new JLabel("  0");
 		lblScoreplayer.setFont(new Font("Vijaya", Font.PLAIN, 70));
 		lblScoreplayer.setForeground(Color.WHITE);
@@ -279,13 +279,13 @@ public class GameGUI extends JFrame {
 		lblScoremachine.setBounds(885, 158, 92, 76);
 		panelGame.add(lblScoremachine);
 		lblScoremachine.setVisible(false);
-	
+	 
 		
 		lblFundopointplayer = new JLabel("");
 		lblFundopointplayer.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/green-ball-point.png")));
 		lblFundopointplayer.setBounds(45, 139, 109, 107);
 		panelGame.add(lblFundopointplayer);
-		lblFundopointplayer.setVisible(false);
+		lblFundopointplayer.setVisible(false); 
 		
 		lblFundopointmachine = new JLabel("");
 		lblFundopointmachine.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/red-ball-point.png")));
@@ -373,6 +373,32 @@ public class GameGUI extends JFrame {
 		lblHandplayer.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/Finger_up_3289.png")));
 		lblHandplayer.setBounds(195, 0, 43, 51);
 		panelGame.add(lblHandplayer);
+		
+		JLabel lblPreviewattack = new JLabel("ATK: ");
+		lblPreviewattack.setForeground(Color.BLACK);
+		lblPreviewattack.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/swords3.png")));
+		lblPreviewattack.setFont(new Font("Impact", Font.PLAIN, 18));
+		lblPreviewattack.setBounds(55, 173, 75, 32);
+		panelGame.add(lblPreviewattack);
+		
+		JLabel lblPreviewdefense = new JLabel("DEF: ");
+		lblPreviewdefense.setForeground(Color.BLACK);
+		lblPreviewdefense.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/shield54.png")));
+		lblPreviewdefense.setFont(new Font("Impact", Font.PLAIN, 18));
+		lblPreviewdefense.setBounds(55, 239, 69, 32);
+		panelGame.add(lblPreviewdefense);
+		
+		JLabel lblPreviewscoreatk = new JLabel("100");
+		lblPreviewscoreatk.setForeground(Color.BLACK);
+		lblPreviewscoreatk.setFont(new Font("Vijaya", Font.PLAIN, 40));
+		lblPreviewscoreatk.setBounds(126, 176, 69, 33);
+		panelGame.add(lblPreviewscoreatk);
+		
+		JLabel lblPreviewscoredef = new JLabel("100");
+		lblPreviewscoredef.setForeground(Color.BLACK);
+		lblPreviewscoredef.setFont(new Font("Vijaya", Font.PLAIN, 40));
+		lblPreviewscoredef.setBounds(126, 241, 69, 33);
+		panelGame.add(lblPreviewscoredef);
 		lblState.setVisible(false);
 		lblHandplayer.setVisible(false); 
 		
@@ -381,7 +407,7 @@ public class GameGUI extends JFrame {
 		lblBackgroundMaster.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/FundoAr.jpg")));
 		lblBackgroundMaster.setBounds(0, 0, 1024, 640);
 		panelGame.add(lblBackgroundMaster); 
-		lblBackgroundMaster.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		lblBackgroundMaster.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null)); 
 	
 	}
 	
@@ -601,5 +627,4 @@ public class GameGUI extends JFrame {
 	public JLabel getLblBackground() {
 		return lblBackground;
 	}
-	
 }
