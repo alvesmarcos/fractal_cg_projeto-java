@@ -588,7 +588,6 @@ public class Game {
 					}
 					
 					
-					
 				} catch (InterruptedException e) {
 				
 					e.printStackTrace();
@@ -597,6 +596,33 @@ public class Game {
 		});
 		
 		t.start();
+	}
+	
+	private void previewForceCardOn(int atk, int def) {
+		
+		gameWindow.getLblPreviewattack().setVisible(true);
+		
+		gameWindow.getLblPreviewdefense().setVisible(true);
+		
+		gameWindow.getLblPreviewscoreatk().setVisible(true);
+		
+		gameWindow.getLblPreviewscoredef().setVisible(true);
+		
+		gameWindow.getLblPreviewscoreatk().setText(""+atk);
+		
+		gameWindow.getLblPreviewscoredef().setText(""+def);
+	}
+	
+	private void previewForceCardOff() {
+		
+		gameWindow.getLblPreviewattack().setVisible(false);
+		
+		gameWindow.getLblPreviewdefense().setVisible(false);
+		
+		gameWindow.getLblPreviewscoreatk().setVisible(false);
+		
+		gameWindow.getLblPreviewscoredef().setVisible(false);
+
 	}
 	
 	private void selectCard1(){
@@ -789,10 +815,43 @@ public class Game {
 
 		public void mouseEntered(MouseEvent e) {
 			
+			if (e.getSource() == gameWindow.getLblCard1()) {
+				
+				if (list_card[0] != null && !gameWindow.getLblDf().isVisible()) previewForceCardOn(list_card[0].getAttack(), list_card[0].getDefense());
+				
+			} else if (e.getSource() == gameWindow.getLblCard2()) {
+				
+				if (list_card[1] != null && !gameWindow.getLblDf().isVisible()) previewForceCardOn(list_card[1].getAttack(), list_card[1].getDefense());
+				
+			} else if (e.getSource() == gameWindow.getLblCard3()) {
+				
+				if (list_card[2] != null && !gameWindow.getLblDf().isVisible()) previewForceCardOn(list_card[2].getAttack(), list_card[2].getDefense());
+				
+			} else if (e.getSource() == gameWindow.getLblCard4()) {
+				
+				if (list_card[3] != null && !gameWindow.getLblDf().isVisible()) previewForceCardOn(list_card[3].getAttack(), list_card[3].getDefense());
+				
+			}
 		}
 
 		public void mouseExited(MouseEvent e) {
-		
+			
+			if (e.getSource() == gameWindow.getLblCard1()) {
+				
+				previewForceCardOff();
+				
+			} else if (e.getSource() == gameWindow.getLblCard2()) {
+				
+				previewForceCardOff();
+				
+			} else if (e.getSource() == gameWindow.getLblCard3()) {
+				
+				previewForceCardOff();
+				
+			} else if (e.getSource() == gameWindow.getLblCard4()) {
+				
+				previewForceCardOff();
+			}
 		}
 
 		public void mousePressed(MouseEvent e) {

@@ -65,6 +65,10 @@ public class GameGUI extends JFrame {
 	private JLabel lblBackground;
 	private JLabel lblHandmachine;
 	private JLabel lblHandplayer;
+	private JLabel lblPreviewattack;
+	private JLabel lblPreviewdefense;
+	private JLabel lblPreviewscoreatk;
+	private JLabel lblPreviewscoredef;
 	
 	//controller
 	
@@ -374,33 +378,37 @@ public class GameGUI extends JFrame {
 		lblHandplayer.setBounds(195, 0, 43, 51);
 		panelGame.add(lblHandplayer);
 		
-		JLabel lblPreviewattack = new JLabel("ATK: ");
+		lblPreviewattack = new JLabel("ATK: ");
 		lblPreviewattack.setForeground(Color.BLACK);
 		lblPreviewattack.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/swords3.png")));
 		lblPreviewattack.setFont(new Font("Impact", Font.PLAIN, 18));
 		lblPreviewattack.setBounds(55, 173, 75, 32);
 		panelGame.add(lblPreviewattack);
+		lblPreviewattack.setVisible(false);
 		
-		JLabel lblPreviewdefense = new JLabel("DEF: ");
+		lblPreviewdefense = new JLabel("DEF: ");
 		lblPreviewdefense.setForeground(Color.BLACK);
 		lblPreviewdefense.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/shield54.png")));
 		lblPreviewdefense.setFont(new Font("Impact", Font.PLAIN, 18));
 		lblPreviewdefense.setBounds(55, 239, 69, 32);
 		panelGame.add(lblPreviewdefense);
+		lblPreviewdefense.setVisible(false);
 		
-		JLabel lblPreviewscoreatk = new JLabel("100");
+		lblPreviewscoreatk = new JLabel("100");
 		lblPreviewscoreatk.setForeground(Color.BLACK);
 		lblPreviewscoreatk.setFont(new Font("Vijaya", Font.PLAIN, 40));
 		lblPreviewscoreatk.setBounds(126, 176, 69, 33);
 		panelGame.add(lblPreviewscoreatk);
+		lblPreviewscoreatk.setVisible(false);
 		
-		JLabel lblPreviewscoredef = new JLabel("100");
+		lblPreviewscoredef = new JLabel("100");
 		lblPreviewscoredef.setForeground(Color.BLACK);
 		lblPreviewscoredef.setFont(new Font("Vijaya", Font.PLAIN, 40));
 		lblPreviewscoredef.setBounds(126, 241, 69, 33);
 		panelGame.add(lblPreviewscoredef);
 		lblState.setVisible(false);
 		lblHandplayer.setVisible(false); 
+		lblPreviewscoredef.setVisible(false);
 		
 			
 		lblBackgroundMaster = new JLabel("");
@@ -626,5 +634,24 @@ public class GameGUI extends JFrame {
 
 	public JLabel getLblBackground() {
 		return lblBackground;
+	}
+	
+	public JLabel getLblPreviewattack() {
+		return lblPreviewattack;
+	}
+
+
+	public JLabel getLblPreviewdefense() {
+		return lblPreviewdefense;
+	}
+
+
+	public JLabel getLblPreviewscoreatk() {
+		return lblPreviewscoreatk;
+	}
+
+
+	public JLabel getLblPreviewscoredef() {
+		return lblPreviewscoredef;
 	}
 }
