@@ -790,18 +790,26 @@ public class Game {
 			} else if (e.getSource() == gameWindow.getLblCard1()){
 				
 				if(card_inBattle_player.getId() == 0) selectCard1();
+				
+				previewForceCardOff();
 			
 			} else if (e.getSource() == gameWindow.getLblCard2()){
 				
 				if(card_inBattle_player.getId() == 0) selectCard2();
+				
+				previewForceCardOff();
 			
 			} else if (e.getSource() == gameWindow.getLblCard3()){
 				
 				if(card_inBattle_player.getId() == 0) selectCard3();
+				
+				previewForceCardOff();
 			
 			} else if (e.getSource() == gameWindow.getLblCard4()){
 				
 				if(card_inBattle_player.getId() == 0) selectCard4();
+				
+				previewForceCardOff();
 			
 			} else if (e.getSource() == gameWindow.getLblAt()){
 				

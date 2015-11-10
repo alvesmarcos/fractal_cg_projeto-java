@@ -2,14 +2,6 @@ package br.com.mhas.engine;
 
 import br.com.mhas.model.Card;
 
-/** 
- * 	Função: Instancia todas as cartas do jogo
- * 
- *  Data Criação: 22/06/2015
- *  
- *  Data Modificação: 13/07/2015
- *  
- * **/
 
 public interface ICardType {
 	
