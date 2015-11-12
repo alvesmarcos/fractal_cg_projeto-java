@@ -8,15 +8,6 @@ import br.com.mhas.engine.ICardType;
 import br.com.mhas.structure.NodeStack;
 import br.com.mhas.structure.Stack;
 
-/** 
- * 	Função: (Jogador x Máquina) será estendida por outras
- * 
- *  Data Criação: 22/06/2015
- *  
- *  Data Modificação: 16/07/2015
- *  
- * **/
-
 
 public class Player implements ICardType {
 	

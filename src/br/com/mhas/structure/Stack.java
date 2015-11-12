@@ -2,15 +2,6 @@ package br.com.mhas.structure;
 
 import br.com.mhas.model.Card;
 
-/** 
- * 	Função: Empilhar aleatoreamente das cartas do jogo
- * 
- *  Data Criação: 22/06/2015
- *  
- *  Data Modificação: 22/06/2015
- *  
- * **/
-
 
 public class Stack {
 	

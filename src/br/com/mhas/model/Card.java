@@ -1,14 +1,5 @@
 package br.com.mhas.model;
 
-/** 
- * 	Função: Manipulação das cartas do jogo
- * 
- *  Data Criação: 22/06/2015
- *  
- *  Data Modificação: 04/07/2015
- *  
- * **/
-
 
 public class Card {
 	
