@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
@@ -21,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+import br.com.mhas.engine.Quiz;
 
 public class QuizGUI extends JFrame {
 
@@ -49,7 +53,7 @@ public class QuizGUI extends JFrame {
 	
 	//controlador
 	
-	//private QuizControl quizControl;
+	private Quiz quizWindow;
 	
 	
 	public static void main(String[] args) {
@@ -70,7 +74,7 @@ public class QuizGUI extends JFrame {
 		
 		iniciaComponentes();
 		
-	//	quizControl = new QuizControl(this);
+		quizWindow = new Quiz(this);
 	}
 	
 	
@@ -110,6 +114,7 @@ public class QuizGUI extends JFrame {
 		panelAlternativeA.setBackground(Color.WHITE);
 		panelAlternativeA.setLayout(null);
 		panelAlternativeA.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelAlternativeA.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		JLabel label = new JLabel("______");
 		label.setForeground(Color.BLACK);
@@ -119,7 +124,7 @@ public class QuizGUI extends JFrame {
 		
 		panelColorA = new JPanel();
 		panelColorA.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelColorA.setBackground(new Color(204, 0, 51));
+		panelColorA.setBackground(new Color(245, 245, 220));
 		panelColorA.setBounds(0, 0, 28, 158);
 		panelAlternativeA.add(panelColorA);
 	
@@ -131,6 +136,7 @@ public class QuizGUI extends JFrame {
 		panelAlternativeB.setLayout(null);
 		panelAlternativeB.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelAlternativeB.setLayout(null);
+		panelAlternativeB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		lblTringulo = new JLabel("");
 		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/fractal_461_fig.gif")));
@@ -140,7 +146,7 @@ public class QuizGUI extends JFrame {
 		
 		panelColorB = new JPanel();
 		panelColorB.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelColorB.setBackground(new Color(51, 204, 255));
+		panelColorB.setBackground(new Color(245, 245, 220));
 		panelColorB.setBounds(0, 0, 28, 158);
 		panelAlternativeB.add(panelColorB);
 		
@@ -150,6 +156,7 @@ public class QuizGUI extends JFrame {
 		panelAlternativeC.setBackground(Color.WHITE);
 		panelAlternativeC.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelAlternativeC.setLayout(null);
+		panelAlternativeC.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		lblIcoquadrado = new JLabel("");
 		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
@@ -159,7 +166,7 @@ public class QuizGUI extends JFrame {
 		
 		panelColorC = new JPanel();
 		panelColorC.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelColorC.setBackground(new Color(204, 0, 51));
+		panelColorC.setBackground(new Color(245, 245, 220));
 		panelColorC.setBounds(0, 0, 28, 158);
 		panelAlternativeC.add(panelColorC);
 		
@@ -170,7 +177,7 @@ public class QuizGUI extends JFrame {
 		contentPane.add(panelTimer);
 		panelTimer.setLayout(null);
 		lblTimer = new JLabel("10");
-		lblTimer.setBounds(10, 36, 236, 238);
+		lblTimer.setBounds(13, 36, 236, 238);
 		panelTimer.add(lblTimer);
 		lblTimer.setForeground(Color.WHITE);
 		lblTimer.setFont(new Font("Trajan Pro", Font.PLAIN, 200));
@@ -179,6 +186,7 @@ public class QuizGUI extends JFrame {
 		lblNext.setBounds(105, 254, 141, 98);
 		panelTimer.add(lblNext);
 		lblNext.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/right-arrow7.png")));
+		lblNext.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		lblTempoRestante = new JLabel("Tempo restante: ");
 		lblTempoRestante.setBounds(32, 11, 181, 14);
@@ -238,5 +246,49 @@ public class QuizGUI extends JFrame {
 		lblBackground.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(lblBackground);  
 		
+	}
+
+
+	public JPanel getPanelAlternativeC() {
+		return panelAlternativeC;
+	}
+
+
+	public JLabel getLblImageFractal() {
+		return lblImageFractal;
+	}
+
+
+	public JPanel getPanelAlternativeB() {
+		return panelAlternativeB;
+	}
+
+
+	public JPanel getPanelAlternativeA() {
+		return panelAlternativeA;
+	}
+
+
+	public JPanel getPanelColorA() {
+		return panelColorA;
+	}
+
+
+	public JPanel getPanelColorB() {
+		return panelColorB;
+	}
+
+
+	public JPanel getPanelColorC() {
+		return panelColorC;
+	}
+
+
+	public JLabel getLblTimer() {
+		return lblTimer;
 	}	
+	
+	public JLabel getLblNext() {
+		return lblNext;
+	}
 }
