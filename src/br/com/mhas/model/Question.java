@@ -1,6 +1,13 @@
 package br.com.mhas.model;
 
-public class Question {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import br.com.mhas.engine.*;
+import br.com.mhas.structure.NodeStack;
+import br.com.mhas.structure.Stack;
+
+public class Question implements IQuestions {
 	
 	//atributes
 	
@@ -16,7 +23,19 @@ public class Question {
 	
 	private char answer;
 	
+	private Stack stack_question;
+	
+	
 	//constructor
+	
+	public Question() {
+		
+		this.id = 0;
+		
+		stack_question = new Stack();
+		
+		loadStackQuestion();
+	}
 	
 	public Question(int id, String path_question, String path_alternativeA, String path_alternativeB,
 					String path_alternativeC, char answer) {
@@ -32,6 +51,50 @@ public class Question {
 		this.path_alternativeC = path_alternativeC;
 		
 		this.answer = answer;
+	}
+	
+	//methods
+	
+	public void loadStackQuestion(){
+		
+		Random random = new Random();
+		
+		List<Question> listAll = new ArrayList<Question>() ;
+		
+		for (int i = 0; i < SIZE_QUESTION ; i++) listAll.add(QUESTION_ARRAY[i]);
+		
+		int index = 0;
+		
+		boolean condition = true;
+		
+		int size = SIZE_QUESTION;
+		
+		while(condition){
+			
+			index = random.nextInt(SIZE_QUESTION);
+		
+			if(listAll.get(index) != null){
+				
+				stack_question.push(listAll.get(index));
+				
+				listAll.set(index, null);
+				
+				size--;
+			}
+			
+			if(size == 0) condition = false;
+		}
+	}
+	
+	public Question onlyQuestion() {
+		
+		NodeStack aux = stack_question.getTopStack();
+		
+		stack_question.pop();
+		
+		if (aux == null) return null;
+		
+		return (Question) aux.getObject();
 	}
 
 	//methods getters and setters

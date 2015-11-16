@@ -5,9 +5,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
 
-import br.com.mhas.gui.QuizGUI;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-public class Quiz {
+import br.com.mhas.gui.GameGUI;
+import br.com.mhas.gui.QuizGUI;
+import br.com.mhas.model.Question;
+
+public class Quiz implements IQuestions {
 	
 	//attributes 
 	
@@ -17,7 +22,7 @@ public class Quiz {
 	
 	private boolean select;
 	
-	private char [] answer = new char[10];
+	private char [] answer = new char[SIZE_QUESTION];
 	
 	private static final int TIMER = 10;
 	
@@ -27,11 +32,19 @@ public class Quiz {
 	
 	private char current_answer;
 	
+	private Question all_question;
+	
+	private Question current_question;
+	
+	private boolean time_over = false;
+	
 	//constructor
 
 	public Quiz(QuizGUI quizWindow) {
 		
 		this.quizWindow = quizWindow;
+		
+		all_question = new Question();
 		
 		select = false; 
 		
@@ -40,6 +53,8 @@ public class Quiz {
 		clearAnswer();
 		
 		index = 0;
+		
+		firstQuestion();
 	}
 	
 	//methods
@@ -63,31 +78,72 @@ public class Quiz {
 	
 	private void clearAnswer() {
 		
-		for(int i = 0 ; i < 10; i++) answer[i] = '\0';
+		for(int i = 0 ; i < SIZE_QUESTION; i++) answer[i] = '\0';
 	}
 	
-	private void nextQuestion() {
+	public void circle() {
+		
+		if(time_over) {
+			
+			//threadTimer.destroy();
+			
+			
+		}
+	}
+	
+	private void finishQuestion() {
 		
 		threadTimer.interrupt();
 		
-		if (!select) answer[index] = '\0';
+		quizWindow.getLblNext().setEnabled(false);
 		
-		else answer[index] = current_answer;
+		quizWindow.getLblTimer().setText("00");
 		
-		System.out.printf("%c",current_answer);
+		for (int i = 0; i < 15; i++) JOptionPane.showMessageDialog(null, (i+1)+") "+answer[i]);
+	}
 	
-		if (index == 9) {
-			
-			for (int i = 0; i < 10; i++) System.out.println("Answer "+i+":"+answer[i]);
-		}
+	private void firstQuestion() {
 		
-		index++;
+		loadImageQuestion();
 		
 		threadTimer = refreshTimer();
 		
 		threadTimer.start();
 		
 		selectColorDefault();
+	}
+	
+	private void loadImageQuestion() {
+		
+		current_question = all_question.onlyQuestion();
+		
+		if(current_question != null) quizWindow.getLblImageFractal().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathQuestion())));
+		
+	}
+	
+	private void nextQuestion() {
+			
+		threadTimer.interrupt();
+		
+		if (!select) answer[index] = '\0';
+		
+		else answer[index] = current_answer;
+		
+		if (index+2 == 16) quizWindow.getLblCounter().setText(("15/15"));
+			
+		else if(index+2 >= 10) quizWindow.getLblCounter().setText((index+2)+"/15");
+		
+		else quizWindow.getLblCounter().setText("0"+(index+2)+"/15");
+		
+		index++;
+		
+		if (index == 15) finishQuestion();
+		
+		selectColorDefault();
+		
+		threadTimer = refreshTimer();
+		
+		threadTimer.start();
 	}
 	
 	private void selectAnswerA() {
@@ -143,6 +199,14 @@ public class Quiz {
 						else quizWindow.getLblTimer().setText("0"+(TIMER-i)); 
 						
 						Thread.sleep(1000);
+						
+						if (i == TIMER) {
+							
+							loadImageQuestion();
+							
+							nextQuestion(); 
+						}
+
 					}
 					
 				} catch (InterruptedException e) {
@@ -189,6 +253,8 @@ public class Quiz {
 			
 			} else if (e.getSource() == quizWindow.getLblNext()) {
 				
+				loadImageQuestion();
+				
 				nextQuestion();
 				
 				select = false;
@@ -228,7 +294,6 @@ public class Quiz {
 			// TODO Auto-generated method stub
 			
 		}
-
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub

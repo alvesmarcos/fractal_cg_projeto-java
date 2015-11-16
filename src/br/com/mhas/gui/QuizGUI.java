@@ -50,10 +50,15 @@ public class QuizGUI extends JFrame {
 	private JPanel panelTimer;
 	private JPanel panelInfo;
 	private JLabel lblBackgroundInfo;
+	private JLabel lblFractal;
+	private JLabel lblCounter;
+	private JLabel lblName;
 	
 	//controlador
 	
 	private Quiz quizWindow;
+	private JLabel lblIcoinfo;
+	private JLabel label_2;
 	
 	
 	public static void main(String[] args) {
@@ -96,7 +101,7 @@ public class QuizGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblImageFractal = new JLabel("");
-		lblImageFractal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/question1.png")));
+		lblImageFractal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/lines-white.png")));
 		lblImageFractal.setBounds(95, 32, 383, 341);
 		contentPane.add(lblImageFractal);
 		lblImageFractal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -176,11 +181,6 @@ public class QuizGUI extends JFrame {
 		panelTimer.setBounds(582, 22, 257, 363);
 		contentPane.add(panelTimer);
 		panelTimer.setLayout(null);
-		lblTimer = new JLabel("10");
-		lblTimer.setBounds(13, 36, 236, 238);
-		panelTimer.add(lblTimer);
-		lblTimer.setForeground(Color.WHITE);
-		lblTimer.setFont(new Font("Trajan Pro", Font.PLAIN, 200));
 		
 		lblNext = new JLabel("");
 		lblNext.setBounds(105, 254, 141, 98);
@@ -189,7 +189,7 @@ public class QuizGUI extends JFrame {
 		lblNext.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		lblTempoRestante = new JLabel("Tempo restante: ");
-		lblTempoRestante.setBounds(32, 11, 181, 14);
+		lblTempoRestante.setBounds(93, 32, 181, 14);
 		panelTimer.add(lblTempoRestante);
 		lblTempoRestante.setForeground(Color.WHITE);
 		lblTempoRestante.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
@@ -199,6 +199,16 @@ public class QuizGUI extends JFrame {
 		lblProximo.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
 		lblProximo.setBounds(31, 285, 84, 14);
 		panelTimer.add(lblProximo);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/timer.png")));
+		label_2.setBounds(20, 11, 64, 64);
+		panelTimer.add(label_2);
+		lblTimer = new JLabel("10");
+		lblTimer.setBounds(23, 57, 226, 238);
+		panelTimer.add(lblTimer);
+		lblTimer.setForeground(Color.WHITE);
+		lblTimer.setFont(new Font("Trajan Pro", Font.PLAIN, 180));
 		
 		lblBackgroundTimer = new JLabel("Pr\u00F3ximo");
 		lblBackgroundTimer.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/FundoVectorWater.jpg")));
@@ -231,6 +241,29 @@ public class QuizGUI extends JFrame {
 		panelInfo.setBounds(582, 405, 257, 177);
 		contentPane.add(panelInfo);
 		panelInfo.setLayout(null);
+		
+		lblFractal = new JLabel(" Fractal:");
+		lblFractal.setForeground(Color.WHITE);
+		lblFractal.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
+		lblFractal.setBounds(10, 113, 84, 19);
+		panelInfo.add(lblFractal);
+		
+		lblCounter = new JLabel("01/15");
+		lblCounter.setForeground(Color.WHITE);
+		lblCounter.setFont(new Font("Trajan Pro", Font.PLAIN, 45));
+		lblCounter.setBounds(99, 13, 143, 89);
+		panelInfo.add(lblCounter);
+		
+		lblName = new JLabel("N\u00E3o Especificado");
+		lblName.setForeground(Color.WHITE);
+		lblName.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
+		lblName.setBounds(99, 113, 171, 19);
+		panelInfo.add(lblName);
+		
+		lblIcoinfo = new JLabel("");
+		lblIcoinfo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/information79.png")));
+		lblIcoinfo.setBounds(10, 29, 64, 64);
+		panelInfo.add(lblIcoinfo);
 		
 		lblBackgroundInfo = new JLabel("");
 		lblBackgroundInfo.setBounds(0, 0, 257, 177);
@@ -290,5 +323,9 @@ public class QuizGUI extends JFrame {
 	
 	public JLabel getLblNext() {
 		return lblNext;
+	}
+	
+	public JLabel getLblCounter() {
+		return lblCounter;
 	}
 }

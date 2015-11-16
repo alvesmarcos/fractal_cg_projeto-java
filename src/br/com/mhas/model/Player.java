@@ -52,7 +52,7 @@ public class Player implements ICardType {
 			
 			pre_card[i] = new Card();
 			
-			pre_card[i] = aux.getType();
+			pre_card[i] = (Card) aux.getObject();
 				
 			aux = aux.getNext();
 			
@@ -100,7 +100,7 @@ public class Player implements ICardType {
 		
 		stack_card.pop();
 		
-		return aux.getType();
+		return (Card) aux.getObject();
 	}
 
 	//methods getters and setters

@@ -2,15 +2,6 @@ package br.com.mhas.structure;
 
 import br.com.mhas.model.Card;
 
-/** 
- * 	Função: Nó da pilha
- * 
- *  Data Criação: 22/06/2015
- *  
- *  Data Modificação: 22/06/2015
- *  
- * **/
-
 
 public class NodeStack {
 	
@@ -18,13 +9,13 @@ public class NodeStack {
 	
 	private NodeStack next;
 	
-	private Card type;
+	private Object object;
 	
 	//constructor
 	
-	public NodeStack(Card type){
+	public NodeStack(Object type){
 		
-		this.type = type;
+		this.object = type;
 	}
 	
 	//methods getters and setters
@@ -39,13 +30,13 @@ public class NodeStack {
 		this.next = next;
 	}
 
-	public Card getType() {
+	public Object getObject() {
 		
-		return type;
+		return object;
 	}
 
-	public void setType(Card type) {
+	public void setObject(Card type) {
 		
-		this.type = type;
+		this.object = type;
 	}	
 }

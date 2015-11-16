@@ -1,16 +1,7 @@
 package br.com.mhas.model;
 
-/** 
- * 	Função: Segundo jogador
- * 
- *  Data Criação: 13/06/2015
- *  
- *  Data Modificação: 14/07/2015
- *  
- * **/
 
 public class Machine extends Player {
-	
 	
 	//constructor
 	

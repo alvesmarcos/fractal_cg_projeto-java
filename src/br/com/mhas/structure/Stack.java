@@ -27,13 +27,15 @@ public class Stack {
 		if(size_stack == 0) return false;
 		
 		top_stack = top_stack.getNext();
-	
+		
+		size_stack--;
+		
 		return true;
 	}
 	
-	public boolean push(Card card){
+	public boolean push(Object object){
 		
-		NodeStack node_stack = new NodeStack(card);
+		NodeStack node_stack = new NodeStack(object);
 		
 		node_stack.setNext(top_stack);
 		
@@ -42,11 +44,6 @@ public class Stack {
 		size_stack++;
 		
 		return true;
-	}
-	
-	public Card top(){
-		
-		return this.top_stack.getType();
 	}
 	
 	//methods getters and setters

@@ -3,7 +3,9 @@ package br.com.mhas.engine;
 import br.com.mhas.model.Question;
 
 public interface IQuestions {
-
+	
+	public static final int SIZE_QUESTION = 15;
+	
 	public static final Question [] QUESTION_ARRAY = { new Question(1, "/question1.png", "/q1-alternativeA", "/q1-alternativeB", "/q1-alternativeC", '#'), 
 															
 														   new Question(2, "/question2.png", "/q2-alternativeA", "/q2-alternativeB", "/q2-alternativeC", '#'),
