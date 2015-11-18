@@ -24,6 +24,8 @@ public class Quiz implements IQuestions {
 	
 	private char [] answer = new char[SIZE_QUESTION];
 	
+	private int [] id_question = new int[SIZE_QUESTION];
+	
 	private static final int TIMER = 10;
 	
 	private Thread threadTimer = refreshTimer();
@@ -81,17 +83,7 @@ public class Quiz implements IQuestions {
 		for(int i = 0 ; i < SIZE_QUESTION; i++) answer[i] = '\0';
 	}
 	
-	public void circle() {
-		
-		if(time_over) {
-			
-			//threadTimer.destroy();
-			
-			
-		}
-	}
-	
-	private void finishQuestion() {
+	private boolean finishQuestion() {
 		
 		threadTimer.interrupt();
 		
@@ -99,7 +91,9 @@ public class Quiz implements IQuestions {
 		
 		quizWindow.getLblTimer().setText("00");
 		
-		for (int i = 0; i < 15; i++) JOptionPane.showMessageDialog(null, (i+1)+") "+answer[i]);
+		score();
+		
+		return true;
 	}
 	
 	private void firstQuestion() {
@@ -117,7 +111,18 @@ public class Quiz implements IQuestions {
 		
 		current_question = all_question.onlyQuestion();
 		
-		if(current_question != null) quizWindow.getLblImageFractal().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathQuestion())));
+		if(current_question != null) {
+			
+			quizWindow.getLblImageFractal().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathQuestion())));
+			
+			quizWindow.getLblAlternativeA().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathAlternativeA())));
+			
+			quizWindow.getLblAlternativeB().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathAlternativeB())));
+			
+			quizWindow.getLblAlternativeC().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathAlternativeC())));
+			
+			id_question[index] = current_question.getId();
+		}
 		
 	}
 	
@@ -127,7 +132,7 @@ public class Quiz implements IQuestions {
 		
 		if (!select) answer[index] = '\0';
 		
-		else answer[index] = current_answer;
+		else answer[index] = current_answer;	
 		
 		if (index+2 == 16) quizWindow.getLblCounter().setText(("15/15"));
 			
@@ -137,13 +142,92 @@ public class Quiz implements IQuestions {
 		
 		index++;
 		
-		if (index == 15) finishQuestion();
+		boolean result = false;
+		
+		if (index == 15) result = finishQuestion();
 		
 		selectColorDefault();
 		
-		threadTimer = refreshTimer();
+		if(!result) {
+			
+			threadTimer = refreshTimer();
 		
-		threadTimer.start();
+			threadTimer.start();
+		}
+		
+		select = false;
+	}
+	
+	private Thread refreshTimer() {
+		
+		Thread th = new Thread(new Runnable() {
+			
+			public void run() {
+				
+				try {
+					
+					for (int i = 0; i <= TIMER; i++) {
+					 
+						if(TIMER - i == 10) quizWindow.getLblTimer().setText(""+(TIMER-i)); 
+						
+						else quizWindow.getLblTimer().setText("0"+(TIMER-i)); 
+						
+						Thread.sleep(1000);
+						
+						if (i == TIMER) {
+							
+							loadImageQuestion();
+							
+							nextQuestion(); 
+						}
+
+					}
+					
+				} catch (InterruptedException e) {
+	
+					//System.out.println("Thread interrupted: "+e.getMessage());
+				}
+			}
+		});
+		
+		return th;
+	}
+	
+	private int score() {
+		
+		quizWindow.getPanelChoice().setVisible(false);
+		
+		quizWindow.getPanelSight().setVisible(false);
+		
+		quizWindow.getPanelInfo().setVisible(false);
+		
+		quizWindow.getPanelTimer().setVisible(false);
+		
+		quizWindow.getLblImageFractal().setVisible(false);
+		
+		int counter = 0;
+		
+		for (int i = 0; i < SIZE_QUESTION; i++) {
+			
+			for (int j = 0 ; j < SIZE_QUESTION; j++) {
+				
+				if (id_question[i] == QUESTION_ARRAY[j].getId()) {
+					
+					if(answer[i] == QUESTION_ARRAY[j].getAnswer()) counter++;
+					
+					break;
+				}
+			}
+		}
+		
+		quizWindow.getPanelScore().setVisible(true);
+		
+		if(counter < 10)quizWindow.getLblScore().setText("0"+counter+"/15");
+		
+		else quizWindow.getLblScore().setText(counter+"/15");
+		
+		
+		return counter;
 	}
 	
 	private void selectAnswerA() {
@@ -184,41 +268,6 @@ public class Quiz implements IQuestions {
 		current_answer = '\0';
 	}
 	
-	private Thread refreshTimer() {
-		
-		Thread th = new Thread(new Runnable() {
-			
-			public void run() {
-				
-				try {
-					
-					for (int i = 0; i <= TIMER; i++) {
-					 
-						if(TIMER - i == 10) quizWindow.getLblTimer().setText(""+(TIMER-i)); 
-						
-						else quizWindow.getLblTimer().setText("0"+(TIMER-i)); 
-						
-						Thread.sleep(1000);
-						
-						if (i == TIMER) {
-							
-							loadImageQuestion();
-							
-							nextQuestion(); 
-						}
-
-					}
-					
-				} catch (InterruptedException e) {
-	
-					System.out.println("Thread interrupted: "+e.getMessage());
-				}
-			}
-		});
-		
-		return th;
-	}
-	
 	//internal class event mouse listener
 	
 	private class EventListener implements MouseListener{
@@ -233,8 +282,8 @@ public class Quiz implements IQuestions {
 				
 				select = true;
 				
-				current_answer = 'a';
-				
+				current_answer = 'a'; 
+							
 			} else if (e.getSource() == quizWindow.getPanelAlternativeB()) {
 				
 				selectAnswerB();

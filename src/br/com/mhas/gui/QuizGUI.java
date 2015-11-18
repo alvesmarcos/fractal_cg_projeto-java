@@ -32,9 +32,9 @@ public class QuizGUI extends JFrame {
 	private JLabel lblBackground;
 	private JPanel panelAlternativeC;
 	private JLabel lblImageFractal;
-	private JLabel lblIcoquadrado;
+	private JLabel lblAlternativeC;
 	private JPanel panelAlternativeB;
-	private JLabel lblTringulo;
+	private JLabel lblAlternativeB;
 	private JPanel panelAlternativeA;
 	private JLabel lblTimer;
 	private JLabel lblTempoRestante;
@@ -53,12 +53,22 @@ public class QuizGUI extends JFrame {
 	private JLabel lblFractal;
 	private JLabel lblCounter;
 	private JLabel lblName;
+	private JLabel lblAlternativeA;
+	private JLabel lblIcoinfo;
+	private JLabel lblIconTimer;
+	private JLabel lblIconChoice;
+	private JPanel panelScore;
+	private JLabel lblResult;
+	private JLabel lblIconResult;
+	private JLabel lblScore;
+	private JLabel lblIconScore;
+	private JLabel lblStatus;
+	private JLabel lblClose;
+	private JLabel lblBackgroundPanel;
 	
 	//controlador
 	
 	private Quiz quizWindow;
-	private JLabel lblIcoinfo;
-	private JLabel label_2;
 	
 	
 	public static void main(String[] args) {
@@ -77,15 +87,15 @@ public class QuizGUI extends JFrame {
 	
 	public QuizGUI() {
 		
-		iniciaComponentes();
+		initQuizGUI();
 		
 		quizWindow = new Quiz(this);
 	}
 	
 	
-	private void iniciaComponentes(){
+	private void initQuizGUI(){
 		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	//	setResizable(false);
 		
@@ -100,14 +110,75 @@ public class QuizGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		/*** ===================================================================================================
+		
+											BEGIN PANEL SCORE
+
+		 **  ===================================================================================================== **/
+
+	
+		panelScore = new JPanel();
+		panelScore.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelScore.setBounds(223, 130, 429, 300);
+		contentPane.add(panelScore);
+		panelScore.setLayout(null);
+		panelScore.setVisible(false);
+		
+		lblResult = new JLabel("Resultado");
+		lblResult.setForeground(Color.DARK_GRAY);
+		lblResult.setFont(new Font("Trajan Pro", Font.PLAIN, 30));
+		lblResult.setBounds(144, 11, 220, 82);
+		panelScore.add(lblResult);
+		
+		lblIconResult = new JLabel("IconResult");
+		lblIconResult.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/done2(4).png")));
+		lblIconResult.setBounds(33, 17, 66, 72);
+		panelScore.add(lblIconResult);
+		
+		lblScore = new JLabel("00/15");
+		lblScore.setForeground(Color.DARK_GRAY);
+		lblScore.setFont(new Font("Trajan Pro", Font.PLAIN, 120));
+		lblScore.setBounds(69, 90, 348, 149);
+		panelScore.add(lblScore);
+	
+		lblIconScore = new JLabel("");
+		lblIconScore.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/position5(1).png")));
+		lblIconScore.setBounds(33, 219, 83, 70);
+		panelScore.add(lblIconScore);
+	
+		lblStatus = new JLabel("Excelente");
+		lblStatus.setForeground(Color.DARK_GRAY);
+		lblStatus.setFont(new Font("Trajan Pro", Font.PLAIN, 25));
+		lblStatus.setBounds(160, 218, 141, 82);
+		panelScore.add(lblStatus);
+	
+		lblClose = new JLabel("");
+		lblClose.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/close20.png")));
+		lblClose.setBounds(383, 11, 34, 32);
+		panelScore.add(lblClose);
+		lblClose.setBorder(new LineBorder(Color.DARK_GRAY));
+	
+		lblBackgroundPanel = new JLabel("");
+		lblBackgroundPanel.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/gray-120.jpg")));
+		lblBackgroundPanel.setBounds(0, 0, 429, 300);
+		panelScore.add(lblBackgroundPanel);
+		lblBackgroundPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+
+
+	/*** ===================================================================================================
+
+												END PANEL SCORE
+
+	 **  ===================================================================================================== **/
+			
+		
 		lblImageFractal = new JLabel("");
-		lblImageFractal.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/lines-white.png")));
 		lblImageFractal.setBounds(95, 32, 383, 341);
 		contentPane.add(lblImageFractal);
 		lblImageFractal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 				
 		panelChoice = new JPanel();
-		panelChoice.setBorder(new LineBorder(Color.WHITE));
+		panelChoice.setBorder(new LineBorder(Color.BLACK));
 		panelChoice.setBackground(Color.DARK_GRAY);
 		panelChoice.setBounds(22, 405, 538, 177);
 		contentPane.add(panelChoice);
@@ -121,11 +192,12 @@ public class QuizGUI extends JFrame {
 		panelAlternativeA.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelAlternativeA.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		JLabel label = new JLabel("______");
-		label.setForeground(Color.BLACK);
-		label.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
-		label.setBounds(45, 61, 92, 37);
-		panelAlternativeA.add(label);
+		lblAlternativeA = new JLabel("");
+		lblAlternativeA.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/q7-alternativeB.BMP")));
+		lblAlternativeA.setForeground(Color.BLACK);
+		lblAlternativeA.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		lblAlternativeA.setBounds(44, 26, 100, 100);
+		panelAlternativeA.add(lblAlternativeA);
 		
 		panelColorA = new JPanel();
 		panelColorA.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -143,11 +215,11 @@ public class QuizGUI extends JFrame {
 		panelAlternativeB.setLayout(null);
 		panelAlternativeB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		lblTringulo = new JLabel("");
-		lblTringulo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/fractal_461_fig.gif")));
-		lblTringulo.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
-		lblTringulo.setBounds(33, 26, 100, 100);
-		panelAlternativeB.add(lblTringulo);
+		lblAlternativeB = new JLabel("");
+		lblAlternativeB.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/fractal_461_fig.gif")));
+		lblAlternativeB.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
+		lblAlternativeB.setBounds(44, 26, 100, 100);
+		panelAlternativeB.add(lblAlternativeB);
 		
 		panelColorB = new JPanel();
 		panelColorB.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -163,17 +235,23 @@ public class QuizGUI extends JFrame {
 		panelAlternativeC.setLayout(null);
 		panelAlternativeC.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
-		lblIcoquadrado = new JLabel("");
-		lblIcoquadrado.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
-		lblIcoquadrado.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado.png")));
-		lblIcoquadrado.setBounds(36, 26, 100, 100);
-		panelAlternativeC.add(lblIcoquadrado);
+		lblAlternativeC = new JLabel("");
+		lblAlternativeC.setFont(new Font("Trajan Pro", Font.PLAIN, 23));
+		lblAlternativeC.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/quadrado.png")));
+		lblAlternativeC.setBounds(44, 26, 100, 100);
+		panelAlternativeC.add(lblAlternativeC);
 		
 		panelColorC = new JPanel();
 		panelColorC.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelColorC.setBackground(new Color(245, 245, 220));
 		panelColorC.setBounds(0, 0, 28, 158);
 		panelAlternativeC.add(panelColorC);
+		
+		lblIconChoice = new JLabel("");
+		lblIconChoice.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/deriner-gris-degrade1.jpg")));
+		lblIconChoice.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblIconChoice.setBounds(0,0, 538, 177);
+		panelChoice.add(lblIconChoice);
 		
 		panelTimer = new JPanel();
 		panelTimer.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -200,10 +278,11 @@ public class QuizGUI extends JFrame {
 		lblProximo.setBounds(31, 285, 84, 14);
 		panelTimer.add(lblProximo);
 		
-		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/timer.png")));
-		label_2.setBounds(20, 11, 64, 64);
-		panelTimer.add(label_2);
+		lblIconTimer = new JLabel("");
+		lblIconTimer.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/timer.png")));
+		lblIconTimer.setBounds(20, 11, 64, 64);
+		panelTimer.add(lblIconTimer);
+		
 		lblTimer = new JLabel("10");
 		lblTimer.setBounds(23, 57, 226, 238);
 		panelTimer.add(lblTimer);
@@ -216,7 +295,7 @@ public class QuizGUI extends JFrame {
 		panelTimer.add(lblBackgroundTimer);
 		lblBackgroundTimer.setForeground(Color.WHITE);
 		lblBackgroundTimer.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
-		lblBackgroundTimer.setBorder(new LineBorder(Color.WHITE));
+		lblBackgroundTimer.setBorder(new LineBorder(Color.BLACK));
 		
 		panelSight = new JPanel();
 		panelSight.setBackground(Color.DARK_GRAY);
@@ -225,7 +304,6 @@ public class QuizGUI extends JFrame {
 		panelSight.setBounds(84, 22, 405, 363);
 		contentPane.add(panelSight);
 		panelSight.setLayout(null);
-		
 		
 		lblBackgroundSight = new JLabel("1/1");
 		lblBackgroundSight.setBounds(0, 0, 405, 363);
@@ -271,10 +349,11 @@ public class QuizGUI extends JFrame {
 		lblBackgroundInfo.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/FundoVectorWater.jpg")));
 		lblBackgroundInfo.setForeground(Color.WHITE);
 		lblBackgroundInfo.setFont(new Font("Trajan Pro", Font.PLAIN, 15));
-		lblBackgroundInfo.setBorder(new LineBorder(Color.WHITE));
-	
+		lblBackgroundInfo.setBorder(new LineBorder(Color.BLACK));
+		
+		
 		lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/dark-steel-full-hd-wallpaper-1zq.jpg")));
+		lblBackground.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/fundo1.jpg")));
 		lblBackground.setBounds(0, 0, 874, 600);
 		lblBackground.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPane.add(lblBackground);  
@@ -327,5 +406,59 @@ public class QuizGUI extends JFrame {
 	
 	public JLabel getLblCounter() {
 		return lblCounter;
+	}
+	
+	public JLabel getLblName() {
+		return lblName;
+	}
+	
+	public JPanel getPanelChoice() {
+		return panelChoice;
+	}
+	
+	public JPanel getPanelSight() {
+		return panelSight;
+	}
+	
+	public JPanel getPanelTimer() {
+		return panelTimer;
+	}
+	
+	public JPanel getPanelInfo() {
+		return panelInfo;
+	}
+
+
+	public JLabel getLblAlternativeC() {
+		return lblAlternativeC;
+	}
+
+
+	public JLabel getLblAlternativeB() {
+		return lblAlternativeB;
+	}
+
+
+	public JLabel getLblAlternativeA() {
+		return lblAlternativeA;
+	}
+
+
+	public JPanel getPanelScore() {
+		return panelScore;
+	}
+
+
+	public JLabel getLblScore() {
+		return lblScore;
+	}
+
+
+	public JLabel getLblStatus() {
+		return lblStatus;
+	}
+	
+	public JLabel getLblClose() {
+		return lblClose;
 	}
 }
