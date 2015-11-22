@@ -6,6 +6,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import br.com.mhas.gui.*;
 import br.com.mhas.model.*;
 
@@ -170,6 +172,7 @@ public class Game {
 		
 		} 
 		
+		gameOver();
 	}
 	
 	private void copy(Card card, Card card_copy){
@@ -270,6 +273,51 @@ public class Game {
 		gameWindow.getLblBackgroundListCard().setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/fundo-carta-onda-brown.png")));
 		
 		kingdom = "earth";
+	}
+	
+	private void gameOver() {
+		
+		if(machine.getLife() <= 0 || player.getLife() <= 0) {
+			
+			gameWindow.getLblBackgroundOver().setVisible(true);
+			
+			if(machine.getLife() <= 0 && player.getLife() <= 0) {
+				
+				ImageIcon icon = new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/empate.png"));
+				
+				String score = "  Jogo EMPATADO o jogo press ENTER para retornar ao menu !!\n\n"+
+								"  >>> Pontuação <<<\n\n  Você: "+player.getLife()+"                  Máquina:  "+machine.getLife()+"\n\n"; 
+				
+				JOptionPane.showMessageDialog(null, score, "Sistema", JOptionPane.PLAIN_MESSAGE, icon);
+			
+				
+			
+			} else if (machine.getLife() <= 0){
+			
+				ImageIcon icon = new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/winner.png"));
+				
+				String score = "  Você GANHOU o jogo press ENTER para retornar ao menu !!\n\n"+
+								"  >>> Pontuação <<<\n\n  Você: "+player.getLife()+"                  Máquina:  "+machine.getLife()+"\n\n"; 
+				
+				JOptionPane.showMessageDialog(null, score, "Sistema", JOptionPane.PLAIN_MESSAGE, icon);
+			
+		
+			
+			} else if (player.getLife() <= 0){
+				
+				ImageIcon icon = new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/loser.png"));
+				
+				String score = "  Você PERDEU o jogo press ENTER para retornar ao menu !!\n\n"+
+								"  >>> Pontuação <<<\n\n  Você: "+player.getLife()+"                  Máquina:  "+machine.getLife()+"\n\n"; 
+				
+				JOptionPane.showMessageDialog(null, score, "Sistema", JOptionPane.PLAIN_MESSAGE, icon);
+			
+			}
+			
+			gameWindow.dispose();
+			
+			new OptionGUI().setVisible(true);
+		}
 	}
 	
 	private Thread lifePlayer(final int numberPlayer){

@@ -15,7 +15,7 @@ public class Player implements ICardType {
 	
 	protected Card[] pre_card = new Card[5];
 	
-	private static final int MAX_LIFE = 500;
+	protected static final int MAX_LIFE = 500;
 	
 	protected String nickname;
 	

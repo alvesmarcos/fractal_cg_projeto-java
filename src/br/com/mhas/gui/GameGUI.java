@@ -69,6 +69,7 @@ public class GameGUI extends JFrame {
 	private JLabel lblPreviewdefense;
 	private JLabel lblPreviewscoreatk;
 	private JLabel lblPreviewscoredef;
+	private JLabel lblBackgroundOver;
 	
 	//controller
 	
@@ -90,6 +91,7 @@ public class GameGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 1024, 640);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -105,6 +107,13 @@ public class GameGUI extends JFrame {
 		panelGame.setBounds(0, 0, 1024, 640);
 		contentPane.add(panelGame);
 		panelGame.setLayout(null);
+
+		lblBackgroundOver = new JLabel("");
+		lblBackgroundOver.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/g-o.png")));
+		lblBackgroundOver.setBounds(0, 0, 1024, 640);
+		panelGame.add(lblBackgroundOver); 
+		lblBackgroundOver.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null)); 
+		lblBackgroundOver.setVisible(false);
 		
 		panelDistraction = new JPanel();
 		panelDistraction.setBackground(Color.PINK);
@@ -403,7 +412,6 @@ public class GameGUI extends JFrame {
 		lblBackgroundMaster.setBounds(0, 0, 1024, 640);
 		panelGame.add(lblBackgroundMaster); 
 		lblBackgroundMaster.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null)); 
-	
 	}
 	
 	
@@ -641,4 +649,11 @@ public class GameGUI extends JFrame {
 	public JLabel getLblPreviewscoredef() {
 		return lblPreviewscoredef;
 	}
+
+
+	public JLabel getLblBackgroundOver() {
+		return lblBackgroundOver;
+	}
+	
+	
 }
