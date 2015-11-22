@@ -882,7 +882,8 @@ public class Game {
 		}
 
 		public void windowClosing(WindowEvent e) {
-		
+			
+			new OptionGUI().setVisible(true);
 		}
 		
 		public void windowDeactivated(WindowEvent e) {

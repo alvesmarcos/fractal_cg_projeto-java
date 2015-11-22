@@ -68,10 +68,10 @@ public class QuizGUI extends JFrame {
 	
 	//controlador
 	
-	private Quiz quizWindow;
+	private Quiz quiz;
 	
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -83,19 +83,19 @@ public class QuizGUI extends JFrame {
 			}
 		});
 	}
-
+*/
 	
 	public QuizGUI() {
 		
 		initQuizGUI();
 		
-		quizWindow = new Quiz(this);
+		quiz = new Quiz(this);
 	}
 	
 	
 	private void initQuizGUI(){
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 	//	setResizable(false);
 		
@@ -146,7 +146,7 @@ public class QuizGUI extends JFrame {
 		lblIconScore.setBounds(33, 219, 83, 70);
 		panelScore.add(lblIconScore);
 	
-		lblStatus = new JLabel("Excelente");
+		lblStatus = new JLabel("  Regular");
 		lblStatus.setForeground(Color.DARK_GRAY);
 		lblStatus.setFont(new Font("Trajan Pro", Font.PLAIN, 25));
 		lblStatus.setBounds(160, 218, 141, 82);
@@ -157,6 +157,7 @@ public class QuizGUI extends JFrame {
 		lblClose.setBounds(383, 11, 34, 32);
 		panelScore.add(lblClose);
 		lblClose.setBorder(new LineBorder(Color.DARK_GRAY));
+		lblClose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	
 		lblBackgroundPanel = new JLabel("");
 		lblBackgroundPanel.setIcon(new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/gray-120.jpg")));

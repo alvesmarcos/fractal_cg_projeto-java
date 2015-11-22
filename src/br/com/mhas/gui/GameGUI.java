@@ -74,21 +74,8 @@ public class GameGUI extends JFrame {
 	
 	protected Game game;
 
-
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameGUI frame = new GameGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	//constructor
 	
 	public GameGUI() {
 		
@@ -335,7 +322,7 @@ public class GameGUI extends JFrame {
 		lblMachine.setBounds(931, 12, 69, 69);
 		panelGame.add(lblMachine);
 		
-		lblNameplayer = new JLabel("Name Player");
+		lblNameplayer = new JLabel("You");
 		lblNameplayer.setForeground(Color.BLACK);
 		lblNameplayer.setFont(new Font("Impact", Font.PLAIN, 18));
 		lblNameplayer.setBounds(86, 12, 99, 21);
@@ -375,7 +362,7 @@ public class GameGUI extends JFrame {
 		
 		lblHandplayer = new JLabel("");
 		lblHandplayer.setIcon(new ImageIcon(GameGUI.class.getResource("/br/com/mhas/image/Finger_up_3289.png")));
-		lblHandplayer.setBounds(195, 0, 43, 51);
+		lblHandplayer.setBounds(126, 0, 43, 51);
 		panelGame.add(lblHandplayer);
 		
 		lblPreviewattack = new JLabel("ATK: ");

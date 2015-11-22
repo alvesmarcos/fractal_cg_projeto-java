@@ -1,16 +1,21 @@
 package br.com.mhas.engine;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import br.com.mhas.gui.GameGUI;
+import br.com.mhas.gui.OptionGUI;
 import br.com.mhas.gui.QuizGUI;
 import br.com.mhas.model.Question;
+import jdk.nashorn.internal.scripts.JO;
 
 public class Quiz implements IQuestions {
 	
@@ -26,8 +31,6 @@ public class Quiz implements IQuestions {
 	
 	private int [] id_question = new int[SIZE_QUESTION];
 	
-	private static final int TIMER = 10;
-	
 	private Thread threadTimer = refreshTimer();
 	
 	private int index;
@@ -37,8 +40,6 @@ public class Quiz implements IQuestions {
 	private Question all_question;
 	
 	private Question current_question;
-	
-	private boolean time_over = false;
 	
 	//constructor
 
@@ -57,6 +58,8 @@ public class Quiz implements IQuestions {
 		index = 0;
 		
 		firstQuestion();
+		
+		this.quizWindow.getLblTimer().setText(""+TIMER);
 	}
 	
 	//methods
@@ -76,6 +79,12 @@ public class Quiz implements IQuestions {
 		quizWindow.getPanelColorC().addMouseListener(event);
 		
 		quizWindow.getLblNext().addMouseListener(event);
+		
+		quizWindow.getLblClose().addMouseListener(event);
+		
+		quizWindow.addKeyListener(event);
+		
+		quizWindow.addWindowListener(event);
 	}
 	
 	private void clearAnswer() {
@@ -121,7 +130,11 @@ public class Quiz implements IQuestions {
 			
 			quizWindow.getLblAlternativeC().setIcon(new ImageIcon(QuizGUI.class.getResource(current_question.getPathAlternativeC())));
 			
+			quizWindow.getLblName().setText(current_question.getPathQuestion());
+			
 			id_question[index] = current_question.getId();
+			
+			 //JOptionPane.showMessageDialog(null,"INDICE: "+id_question[index]+ " ID:"+ current_question.getId());
 		}
 		
 	}
@@ -129,6 +142,8 @@ public class Quiz implements IQuestions {
 	private void nextQuestion() {
 			
 		threadTimer.interrupt();
+		
+		//JOptionPane.showMessageDialog(null, current_question.getId());
 		
 		if (!select) answer[index] = '\0';
 		
@@ -139,7 +154,7 @@ public class Quiz implements IQuestions {
 		else if(index+2 >= 10) quizWindow.getLblCounter().setText((index+2)+"/15");
 		
 		else quizWindow.getLblCounter().setText("0"+(index+2)+"/15");
-		
+			
 		index++;
 		
 		boolean result = false;
@@ -156,6 +171,8 @@ public class Quiz implements IQuestions {
 		}
 		
 		select = false;
+		
+		current_answer = '\0';
 	}
 	
 	private Thread refreshTimer() {
@@ -168,9 +185,11 @@ public class Quiz implements IQuestions {
 					
 					for (int i = 0; i <= TIMER; i++) {
 					 
-						if(TIMER - i == 10) quizWindow.getLblTimer().setText(""+(TIMER-i)); 
+						if(TIMER - i == TIMER) quizWindow.getLblTimer().setText(""+(TIMER-i)); 
 						
-						else quizWindow.getLblTimer().setText("0"+(TIMER-i)); 
+						else if(TIMER - i < 10) quizWindow.getLblTimer().setText("0"+(TIMER-i)); 
+						
+						else quizWindow.getLblTimer().setText(""+(TIMER-i)); 
 						
 						Thread.sleep(1000);
 						
@@ -212,7 +231,7 @@ public class Quiz implements IQuestions {
 			for (int j = 0 ; j < SIZE_QUESTION; j++) {
 				
 				if (id_question[i] == QUESTION_ARRAY[j].getId()) {
-					
+						
 					if(answer[i] == QUESTION_ARRAY[j].getAnswer()) counter++;
 					
 					break;
@@ -226,6 +245,13 @@ public class Quiz implements IQuestions {
 		
 		else quizWindow.getLblScore().setText(counter+"/15");
 		
+		if(counter >= 13) quizWindow.getLblStatus().setText("Excelente");
+		
+		else if (counter < 13 && counter >= 10) quizWindow.getLblStatus().setText("     Bom");
+		
+		else if (counter < 10 && counter >= 6) quizWindow.getLblStatus().setText("  Regular");
+		
+		else if (counter <= 5) quizWindow.getLblStatus().setText("  Péssimo");
 		
 		return counter;
 	}
@@ -270,7 +296,7 @@ public class Quiz implements IQuestions {
 	
 	//internal class event mouse listener
 	
-	private class EventListener implements MouseListener{
+	private class EventListener implements MouseListener, KeyListener, WindowListener {
 		
 		//methods interface mouselistener
 	
@@ -302,11 +328,15 @@ public class Quiz implements IQuestions {
 			
 			} else if (e.getSource() == quizWindow.getLblNext()) {
 				
-				loadImageQuestion();
-				
 				nextQuestion();
 				
+				loadImageQuestion();
+				
 				select = false;
+			
+			} else if (e.getSource() ==  quizWindow.getLblClose()) {
+				
+				quizWindow.dispose();
 			}
 		}
 
@@ -338,15 +368,63 @@ public class Quiz implements IQuestions {
 			
 		}
 
-		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
+		
+		}
+		
+		
+		public void mouseReleased(MouseEvent e) {
+	
+		}
+
+		public void keyReleased(KeyEvent e) {
+		
+		}
+		
+		
+		public void keyPressed(KeyEvent e) {
+			
+			if (e.getKeyChar() == 'a'){
+				
+				ImageIcon icon = new ImageIcon(QuizGUI.class.getResource("/br/com/mhas/image/education31(1).png"));
+				
+				JOptionPane.showMessageDialog(null, " Resposta >> "+current_question.getAnswer(), "Sistema", JOptionPane.INFORMATION_MESSAGE, icon);
+			}
+		}
+		
+		public void keyTyped(KeyEvent e) {
+		
+		}
+
+		public void windowActivated(WindowEvent e) {
+				
+		}
+
+		public void windowClosed(WindowEvent e) {
 			
 		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
+
+		public void windowClosing(WindowEvent e) {
 			
+			threadTimer.interrupt();
+			
+			new OptionGUI().setVisible(true);
+		}
+
+		public void windowDeactivated(WindowEvent e) {
+			
+		}
+		
+		public void windowDeiconified(WindowEvent e) {
+			
+		}
+		
+		public void windowIconified(WindowEvent e) {
+
+		}
+
+		public void windowOpened(WindowEvent e) {
+	
 		}
 	
 	}

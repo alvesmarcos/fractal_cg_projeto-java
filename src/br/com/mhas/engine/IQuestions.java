@@ -6,6 +6,8 @@ public interface IQuestions {
 	
 	public static final int SIZE_QUESTION = 15;
 	
+	public static final int TIMER = 10;
+	
 	public static final Question [] QUESTION_ARRAY = { new Question(1, "/question1.png", "/q1-alternativeA.png", "/q1-alternativeB.png", "/q1-alternativeC.png", 'c'), 
 															
 														   new Question(2, "/question2.png", "/q2-alternativeA.png", "/q2-alternativeB.png", "/q2-alternativeC.png", 'a'),
@@ -28,7 +30,7 @@ public interface IQuestions {
 														   
 														   new Question(11, "/question11.png", "/q11-alternativeA.png", "/q11-alternativeB.png", "/q11-alternativeC.png", 'c'),
 														   
-														   new Question(12, "/question12.png", "/q12-alternativeA.png", "/q12-alternativeB.png", "/q12-alternativeC.png", 'c'),
+														   new Question(12, "/question12.png", "/q12-alternativeA.png", "/q12-alternativeB.png", "/q12-alternativeC.png", 'a'),
 														   
 														   new Question(13, "/question13.png", "/q13-alternativeA.png", "/q13-alternativeB.png", "/q13-alternativeC.png", 'a'),
 														   
