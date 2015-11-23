@@ -45,20 +45,7 @@ public class OptionGUI extends JFrame {
 	
 	private Option option;
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OptionGUI frame = new OptionGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
+	
 	public OptionGUI() {
 		
 		initOptionGUI();

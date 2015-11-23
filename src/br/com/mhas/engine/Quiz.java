@@ -336,6 +336,8 @@ public class Quiz implements IQuestions {
 			
 			} else if (e.getSource() ==  quizWindow.getLblClose()) {
 				
+				new OptionGUI().setVisible(true);
+				
 				quizWindow.dispose();
 			}
 		}

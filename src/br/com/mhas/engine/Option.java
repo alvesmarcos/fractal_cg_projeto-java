@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import br.com.mhas.gui.GameGUI;
+import br.com.mhas.gui.KochGUI;
 import br.com.mhas.gui.OptionGUI;
 import br.com.mhas.gui.QuizGUI;
 
@@ -75,7 +76,7 @@ public class Option {
 			
 			} else if(e.getSource() == optionWindow.getPanelKochCurve()){
 				
-				//new QuizGUI().setVisible(true);
+				new KochGUI().setVisible(true);
 				
 				optionWindow.dispose();
 			
@@ -86,29 +87,22 @@ public class Option {
 				optionWindow.dispose();
 			}
 		}
-
-		@Override
+		
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+	
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+		
 		}
 
-		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+		
 		}
 
-		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+	
 		}
 		
 		

@@ -71,20 +71,6 @@ public class QuizGUI extends JFrame {
 	private Quiz quiz;
 	
 	
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QuizGUI frame = new QuizGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
-	
 	public QuizGUI() {
 		
 		initQuizGUI();
@@ -97,7 +83,7 @@ public class QuizGUI extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-	//	setResizable(false);
+		setResizable(false);
 		
 		setBounds(325,45, 874, 600);
 		
