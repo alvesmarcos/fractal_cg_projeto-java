@@ -37,7 +37,7 @@ public class Player implements ICardType {
 		
 		stack_card = new Stack();
 		
-		loadListCard();
+		//loadListCard();
 	}
 	
 	//methods
@@ -69,6 +69,8 @@ public class Player implements ICardType {
 	
 	protected void loadStackCard(){
 		
+		loadListCard();
+		
 		Random random = new Random();
 		
 		int index = 0;
@@ -99,6 +101,8 @@ public class Player implements ICardType {
 		NodeStack aux = stack_card.getTopStack();
 		
 		stack_card.pop();
+		
+		if(stack_card.getSizeStack() == 0) loadStackCard();
 		
 		return (Card) aux.getObject();
 	}
